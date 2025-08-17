@@ -68,4 +68,30 @@ let circle:Circle = Circle(radius:8,name:"our lovely circle ")
 circle.simpleDescription() //our lovely circle  radius is: 8 and it's area is 201.06192982974676
 circle.superClassCall() //Hello From The Super Class
 
-//still need to talk about: setters, getters, will set, did set
+//using getters and setters:
+
+class EquilateralTriangle: NamedShape {
+    var sideLength: Double = 0.0
+
+
+    init(sideLength: Double, name: String) {
+        self.sideLength = sideLength
+        super.init(name: name)
+        numberOfSides = 3
+    }
+
+
+    var perimeter: Double {
+        get {//when getting the perimeter value it does that actions
+             return 3.0 * sideLength
+        }
+        set { // you could do it like set (newValueName){} to give the value a name
+            sideLength = newValue / 3.0 //newValue is the value that you set object.perimeter=newValue
+        }
+    }
+}
+
+var triangle = EquilateralTriangle(sideLength: 3.1, name: "a triangle")
+print(triangle.perimeter)// Prints "9.3"
+triangle.perimeter = 9.9
+print(triangle.sideLength)// Prints "3.3000000000000003"
